@@ -5,6 +5,8 @@
 package objectsfirst.view;
 
 import java.awt.Image;
+import java.util.LinkedList;
+import java.util.List;
 import objectsfirst.controller.Positionable;
 
 /**
@@ -18,7 +20,7 @@ public interface Paintable extends Positionable {
      */
     Image getImage();
 
-;
+
 
 
 }

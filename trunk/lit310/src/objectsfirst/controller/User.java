@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
  *
  * @author Gustafsp
  */
-public class User implements userInput, KeyListener{
+public class User implements UserInput, KeyListener{
     Direction direction = Direction.STOP;
     Character lastAction = ' ';
 
