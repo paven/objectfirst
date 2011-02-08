@@ -5,11 +5,15 @@
 
 package objectsfirst.controller;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author Gustafsp
  */
 public interface Positionable {
+
     /**
      * @return the x
      */

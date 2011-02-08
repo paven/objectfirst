@@ -19,33 +19,40 @@ import objectsfirst.view.Paintable;
  */
 public class GameCanvas extends Canvas implements Runnable{
     public static final long serialVersionUID = 1L;
-    private List<Paintable> paintables = new LinkedList<Paintable>();
+        /**
+     * al active objectes of the paintable interface shoule be added to this list
+     */
+    private final static List<Paintable> paintables = new LinkedList<Paintable>();
+    
     public GameCanvas() {
-
+        new Thread(this).start();
     }
     @Override
     public void paint(Graphics g){
         //super.paint(g);
         g.setColor(Color.red);
         g.fillRect(0, 0, getWidth(), getHeight());
-        for(Paintable paintable: getPaintables()){
+        for(Paintable paintable: paintables){
            
             g.drawImage(paintable.getImage(), paintable.getX(), paintable.getY(), this);
         }
-        
+    
     }
 
     /**
      * @return the paintables
      */
-    public List<Paintable> getPaintables() {
-        return paintables;
-    }
+
 
     public void run() {
         while(true){
-
-            this.paint(this.getGraphics());
+            if(this.isShowing()){
+                this.paint(this.getGraphics());
+            }
         }
+    }
+
+    public void add(Paintable paintable) {
+        paintables.add(paintable);
     }
 }

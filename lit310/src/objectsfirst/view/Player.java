@@ -30,6 +30,7 @@ public class Player extends objectsfirst.controller.Player implements Paintable 
 
     public Player(User user) {
         super(user);
+
     }
 
     public Image getImage() {

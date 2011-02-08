@@ -5,6 +5,8 @@
 
 package objectsfirst.controller;
 
+import java.util.LinkedList;
+import java.util.List;
 import objectsfirst.view.Paintable;
 
 /**
@@ -12,6 +14,11 @@ import objectsfirst.view.Paintable;
  * @author Gustafsp
  */
 public interface Moveable extends Positionable {
-    public void move(int delta );
+    /**
+     * al active objectes of the Moveable interface shoule be added to this list
+     */
+    public final static List<Moveable> moveables = new LinkedList<Moveable>();
+    /** delta is in milli seconds */
+    public void move(long delta );
 
 }
