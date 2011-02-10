@@ -9,6 +9,7 @@ package objectsfirst.controller;
  *
  * @author Gustafsp
  */
-public enum Direction {
-    UP, DOWN, LEFT, RIGHT, STOP
+public interface Recyclable {
+
+
 }

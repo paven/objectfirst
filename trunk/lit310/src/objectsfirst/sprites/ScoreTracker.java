@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.controller;
+package objectsfirst.sprites;
+
+import objectsfirst.controller.Recyclable;
 
 /**
  *
  * @author Gustafsp
  */
-public enum Direction {
-    UP, DOWN, LEFT, RIGHT, STOP
-}
+

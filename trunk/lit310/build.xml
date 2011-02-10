@@ -71,4 +71,26 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="javadocs" depends="build" description="generates javadoc and also UML Diagram">
+		<mkdir dir="${reports.dir}/javadoc"/>
+	        <javadoc sourcepath="${src.dir}" packagenames="com.stelligent.*" destdir="${reports.dir}/javadoc"
+	        	classpathref="java.classpath" private="true">
+	        	   <doclet name="org.umlgraph.doclet.UmlGraphDoc"
+	        		  path="lib/UMLGraph.jar">
+	        	        <param name="-attributes" />
+	        	        <param name="-operations" />
+	        	        <param name="-qualify" />
+	        	        <param name="-types" />
+	        	        <param name="-visibility" />
+	        	    </doclet>
+	        	  </javadoc>
+		  <apply executable="dot" dest="${reports.dir}" parallel="false">
+		    <arg value="-Tpng"/>
+		    <arg value="-o"/>
+		     <targetfile/>
+		     <srcfile/>
+		     <fileset dir="${reports.dir}" includes="*.dot"/>
+		     <mapper type="glob" from="*.dot" to="*.png"/>
+		  </apply>
+	</target>
 </project>

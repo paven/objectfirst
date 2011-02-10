@@ -41,10 +41,13 @@ public class User implements UserInput, KeyListener{
         else if(e.getKeyCode() == KeyEvent.VK_DOWN){
             direction = Direction.DOWN;
         }
+        
+
     }
 
     public void keyReleased(KeyEvent e) {
-        direction = Direction.STOP;
+
+        
     }
 
 }

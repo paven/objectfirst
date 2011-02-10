@@ -7,6 +7,8 @@ package objectsfirst.controller;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -27,6 +29,14 @@ public class GameEngine implements Runnable{
     public void run() {
         while(true){
             long delta = System.currentTimeMillis()-lastLoop;;
+//            if(delta<10){ //
+//                try {
+//                    Thread.sleep(10 - delta);
+//                } catch (InterruptedException ex) {
+//                    break;
+//                }
+//                delta = System.currentTimeMillis()-lastLoop;
+//            }
             lastLoop = System.currentTimeMillis();
             for(Positionable moveable: positionables){
                 if(moveable instanceof Moveable){

@@ -6,7 +6,7 @@
 package objectsfirst;
 
 import java.awt.PopupMenu;
-import objectsfirst.view.Player;
+import objectsfirst.sprites.Player;
 import java.awt.Container;
 import objectsfirst.controller.GameEngine;
 import objectsfirst.controller.Positionable;
