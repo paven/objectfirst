@@ -1,0 +1,45 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package objectsfirst.sprites;
+
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import objectsfirst.controller.Recyclable;
+import objectsfirst.view.Paintable;
+
+/**
+ *
+ * @author Gustafsp
+ */
+public class Paper implements Recyclable, Paintable {
+
+      private Image image;
+   
+    private int y = 200;
+    private int x = 200;
+
+    public Paper() throws IOException {
+        String filepath = "res"+File.separator +"gubbe.png";
+        File file = new File(filepath);
+        image = ImageIO.read(file);
+
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+}

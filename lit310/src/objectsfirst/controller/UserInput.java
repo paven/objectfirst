@@ -5,10 +5,14 @@
 
 package objectsfirst.controller;
 
+
+
 /**
  *
  * @author Gustafsp
  */
-public enum Direction {
-    UP, DOWN, LEFT, RIGHT, STOP
+interface UserInput {
+    public Direction getDirection();
+    public Character getActionKey();
+
 }
