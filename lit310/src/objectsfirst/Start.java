@@ -6,6 +6,7 @@
 package objectsfirst;
 
 import java.awt.PopupMenu;
+import java.io.IOException;
 import objectsfirst.sprites.Player;
 import java.awt.Container;
 import objectsfirst.controller.GameEngine;
@@ -25,7 +26,7 @@ public class Start {
     private GameCanvas gameCanvas = new GameCanvas();
     private GameEngine gameEngine = new GameEngine();
 
-    public Start(Container container){
+    public Start(Container container) throws IOException{
         User user = new User();
         container.addKeyListener(user);
         Player player = new Player(user);

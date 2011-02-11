@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -79,11 +80,16 @@ public class Player extends Sprite  implements  Moveable {
 
     }
 
-    public void collidesWith(Collideble other) {
+  
+    public boolean checkPixel(Point point) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean checkPixel(Point point) {
+    public Rectangle getCollisionBox() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public boolean collidesWith(Point point) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
