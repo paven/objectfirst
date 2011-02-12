@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package objectsfirst.sprites;
+package nu.mumma.lit310.recycleGame.sprites;
 
+import nu.mumma.lit310.objectsFirst.core.User;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Direction;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Moveable;
 import java.awt.Color;
@@ -18,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
-import objectsfirst.controller.*;
+
 
 
 /**

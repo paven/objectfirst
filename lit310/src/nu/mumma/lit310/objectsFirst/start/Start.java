@@ -3,15 +3,15 @@
  * and open the template in the editor.
  */
 
-package objectsfirst;
+package nu.mumma.lit310.objectsfirst.start;
 
 import java.awt.PopupMenu;
 import java.io.IOException;
-import objectsfirst.sprites.Player;
+import nu.mumma.lit310.recycleGame.sprites.Player;
 import java.awt.Container;
 import nu.mumma.lit310.objectsFirst.core.GameEngine;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
-import objectsfirst.controller.User;
+import nu.mumma.lit310.objectsFirst.core.User;
 import nu.mumma.lit310.objectsFirst.core.GameCanvas;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 
@@ -29,10 +29,12 @@ public class Start {
     public Start(Container container) throws IOException{
         User user = new User();
         container.addKeyListener(user);
+        //gameCanvas.addKeyListener(user);
         Player player = new Player(user);
-        add(player);
         container.add(gameCanvas);
         container.validate();
+        container.requestFocus();
+        add(player);
     }
     public void add(Positionable positionable){
         gameEngine.add(positionable);
