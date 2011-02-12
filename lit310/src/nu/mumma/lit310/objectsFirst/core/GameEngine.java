@@ -31,7 +31,6 @@ public class GameEngine implements Runnable {
     public void run() {
         long delta = System.currentTimeMillis() - lastLoop;
         lastLoop = System.currentTimeMillis();
-        System.out.println("delta");
         makeMoves(delta);
         
     }
@@ -43,9 +42,6 @@ public class GameEngine implements Runnable {
                 if (moveable instanceof Collideble) {
                     for (Positionable other : positionables) {
                         if (other != moveable) {
-                            System.out.println("What");
-                            System.out.println(other.getClass());
-                            System.out.println(moveable.getClass());
                             if (other instanceof Collideble) {
                                 if (((Collideble) other).collidesWith((Collideble) moveable)) {
                                     ((Collideble) other).collidedWith((Collideble) moveable);

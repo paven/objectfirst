@@ -48,7 +48,7 @@ public class Player extends Sprite  implements  Moveable {
 
 
     public void move(long delta) {
-        System.out.println(delta);
+        
         if(user.getDirection() == Direction.DOWN){
             moveY(((double)delta)/100);
 
@@ -76,14 +76,44 @@ public class Player extends Sprite  implements  Moveable {
 
     public void escape(Rectangle2D.Double other) {
 
+
         while(collidesWith(other)){
-            if(other.getCenterX() < this.getCollisionBox().getCenterX()){
-                this.moveX(1);
+            double down = other.getMaxY() -  this.getCollisionBox().getMinY();
+            double up = this.getCollisionBox().getMaxY() - other.getMinY();
+            double left = other.getMaxX() -  this.getCollisionBox().getMinX();
+            double right = this.getCollisionBox().getMaxY() - other.getMinY();
+            System.out.println("Down; " + down + " UP: " + up + " LEFT: " + left + " Right " + right);
+            
+            if(Math.abs(Math.min(down, up)  - Math.min(left, right))<2){ //is close to corner
+                if(user.getDirection() == Direction.LEFT)
+                    right /=2;
+                else if(user.getDirection() == Direction.RIGHT){
+                    left /=2;
+                }
+                else if(user.getDirection() == Direction.DOWN){
+                    up /=2;
+                }
+                else if(user.getDirection() == Direction.UP){
+                    down /=2;
+                }
             }
-            else if(other.getCenterX() > this.getCollisionBox().getCenterX())
-            {
-                this.moveX(-1);
+            if(Math.min(down, up) < Math.min(left, right)){ //Less is closer
+                if(down < up){
+                    this.moveY(down);
+                }
+                else{
+                    this.moveY(-up);
+                }
             }
+            else {
+                if(left < right){
+                    this.moveX(-left);
+                }
+                else{
+                    this.moveY(right);
+                }
+            }
+            
         }
     }
 

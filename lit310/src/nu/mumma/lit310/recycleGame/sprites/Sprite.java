@@ -37,7 +37,7 @@ public Sprite(double x, double y) throws IOException {
     }
     private void init(double x, double y) throws IOException {
         String filepath = "res" + File.separator + filename;
-        System.out.println(filepath);
+       
         File file = new File(filepath);
         image = ImageIO.read(file);
         collisionBox = new Rectangle2D.Double(x, y, image.getWidth(), image.getHeight());
