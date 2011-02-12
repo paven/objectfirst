@@ -15,8 +15,8 @@ import java.awt.event.KeyListener;
  * @author Gustafsp
  */
 public class User implements UserInput, KeyListener{
-    Direction direction = Direction.STOP;
-    Character lastAction = ' ';
+    private Direction direction = Direction.STOP;
+    private Character lastAction = ' ';
 
     public Direction getDirection() {
         return direction;
@@ -32,7 +32,7 @@ public class User implements UserInput, KeyListener{
     }
 
     public void keyPressed(KeyEvent e) {
-        
+        System.out.println("Ehat");
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
            direction = Direction.LEFT;
         }

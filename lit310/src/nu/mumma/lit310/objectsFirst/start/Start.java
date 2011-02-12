@@ -5,8 +5,9 @@
 
 package nu.mumma.lit310.objectsfirst.start;
 
-import java.awt.PopupMenu;
+
 import java.io.IOException;
+import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
 import nu.mumma.lit310.recycleGame.sprites.Player;
 import java.awt.Container;
 import nu.mumma.lit310.objectsFirst.core.GameEngine;
@@ -14,6 +15,8 @@ import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 import nu.mumma.lit310.objectsFirst.core.User;
 import nu.mumma.lit310.objectsFirst.core.GameCanvas;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
+import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Bin;
+import nu.mumma.lit310.recycleGame.sprites.PaperBin;
 
 
 
@@ -27,14 +30,21 @@ public class Start {
     private GameEngine gameEngine = new GameEngine();
 
     public Start(Container container) throws IOException{
+
         User user = new User();
-        container.addKeyListener(user);
+
+
         //gameCanvas.addKeyListener(user);
         Player player = new Player(user);
         container.add(gameCanvas);
         container.validate();
-        container.requestFocus();
+        gameCanvas.requestFocus();
+        gameCanvas.addKeyListener(user);
+        container.addKeyListener(user);
         add(player);
+        buildMap();
+        run();
+  
     }
     public void add(Positionable positionable){
         gameEngine.add(positionable);
@@ -42,5 +52,20 @@ public class Start {
             gameCanvas.add((Paintable) positionable);
         }
     }
+
+    private void buildMap() {
+      //  add(new PaperBin());
+        
+
+    }
+
+    private void run() {
+        while(true){
+            gameEngine.run();
+            gameCanvas.run();
+        }
+    }
+
+
 
 }

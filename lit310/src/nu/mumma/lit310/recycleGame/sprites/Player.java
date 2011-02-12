@@ -54,20 +54,20 @@ public class Player extends Sprite  implements  Moveable {
             delta = 500;
         }
         if(user.getDirection() == Direction.DOWN){
-            setY(getY() + ((double)delta)/10000);
+            moveY(((double)delta)/100);
 
         }
         if(user.getDirection() == Direction.UP)
         {
-            //y -= ((double)delta)/10000;
+            moveY( - ((double)delta)/100);
         }
         if(user.getDirection() == Direction.RIGHT)
         {
-           // x += ((double)delta)/10000;
+           moveX(((double)delta)/100);
         }
         if(user.getDirection() == Direction.LEFT)
         {
-            //x -= ((double)delta)/10000;
+            moveX(- ((double)delta)/100);
         }
     }
 

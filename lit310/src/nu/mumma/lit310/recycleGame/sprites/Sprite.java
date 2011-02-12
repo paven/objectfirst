@@ -57,6 +57,12 @@ public class Sprite implements Collideble, Paintable {
     public int getY() {
         return (int)y;
     }
+    public void moveY(double dy) {
+        y += dy;
+    }
+    public void moveX(double dx){
+        x += dx;
+    }
 
     public Image getImage() {
         return image;
