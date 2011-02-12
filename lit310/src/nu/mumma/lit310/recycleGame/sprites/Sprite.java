@@ -8,6 +8,7 @@ package nu.mumma.lit310.recycleGame.sprites;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,22 +20,32 @@ import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
  *
  * @author Gustafsp
  */
-public class Sprite implements Collideble, Paintable {
-    protected final String filname = "gubbe.png";
-    private final BufferedImage image;
-    private Rectangle collisionBox;
-    private double x;
-    private double y;
+public abstract class Sprite implements Collideble, Paintable {
+    protected String filename = "gubbe.png";
+    private BufferedImage image;
+    private Rectangle2D.Double collisionBox;
+    
 
-    public Sprite() throws IOException {
-        String filepath = "res"+File.separator + filname;
+    public Sprite(double x, double y, String filename) throws IOException {
+        this.filename = filename;
+        init(x, y);
+    }
+public Sprite(double x, double y) throws IOException {
+        int lastPoint = this.getClass().toString().lastIndexOf('.');
+        this.filename = this.getClass().toString().substring(lastPoint+1)+".png";
+        init(x, y);
+    }
+    private void init(double x, double y) throws IOException {
+        String filepath = "res" + File.separator + filename;
+        System.out.println(filepath);
         File file = new File(filepath);
         image = ImageIO.read(file);
-        collisionBox = new Rectangle(this.getX(), this.getY(), image.getWidth(), image.getHeight());
+        collisionBox = new Rectangle2D.Double(x, y, image.getWidth(), image.getHeight());
     }
+    
 
 
-    public boolean collidesWith(Rectangle other){
+    public boolean collidesWith(Rectangle2D.Double other){
 
         return collisionBox.intersects(other);
     }
@@ -42,7 +53,8 @@ public class Sprite implements Collideble, Paintable {
         return collidesWith(other.getCollisionBox());
     }
 
-    public Rectangle getCollisionBox() {
+    public Rectangle2D.Double getCollisionBox() {
+        
         return collisionBox;
     }
 
@@ -51,39 +63,37 @@ public class Sprite implements Collideble, Paintable {
     }
 
     public int getX() {
-        return (int)x;
+        return (int)getCollisionBox().getX();
     }
 
     public int getY() {
-        return (int)y;
+        return (int)getCollisionBox().getY();
     }
     public void moveY(double dy) {
-        y += dy;
+       getCollisionBox().y += dy;
     }
     public void moveX(double dx){
-        x += dx;
+       getCollisionBox().x += dx;
     }
 
     public Image getImage() {
         return image;
     }
 
-    public void collidedWith(Collideble other) {
-
-    }
-
+    public abstract void collidedWith(Collideble other);
     /**
      * @param x the x to set
      */
     protected void setX(double x) {
-        this.x = x;
+        getCollisionBox().x = x;
+
     }
 
     /**
      * @param y the y to set
      */
     protected void setY(double y) {
-        this.y = y;
+        getCollisionBox().y = y;
     }
 
 }

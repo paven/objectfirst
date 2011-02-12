@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Collideble;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Moveable;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 
@@ -28,25 +29,38 @@ public class GameEngine implements Runnable {
     }
 
     public void run() {
-            long delta = System.currentTimeMillis() - lastLoop;   
-            lastLoop = System.currentTimeMillis();
-            makeMoves(delta);
-            resolveColisions();
+        long delta = System.currentTimeMillis() - lastLoop;
+        lastLoop = System.currentTimeMillis();
+        System.out.println("delta");
+        makeMoves(delta);
+        
     }
 
     private void makeMoves(long delta) {
         for (Positionable moveable : positionables) {
             if (moveable instanceof Moveable) {
                 ((Moveable) moveable).move(delta);
+                if (moveable instanceof Collideble) {
+                    for (Positionable other : positionables) {
+                        if (other != moveable) {
+                            System.out.println("What");
+                            System.out.println(other.getClass());
+                            System.out.println(moveable.getClass());
+                            if (other instanceof Collideble) {
+                                if (((Collideble) other).collidesWith((Collideble) moveable)) {
+                                    ((Collideble) other).collidedWith((Collideble) moveable);
+                                    ((Collideble) moveable).collidedWith((Collideble) other);
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 
     public void add(Positionable positionable) {
         positionables.add(positionable);
-    }
-
-    private void resolveColisions() {
-        //TODO
     }
 }

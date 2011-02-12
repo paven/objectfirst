@@ -28,11 +28,10 @@ public class User implements UserInput, KeyListener{
 
     public void keyTyped(KeyEvent e) {
         lastAction = e.getKeyChar();
-        System.out.println(e.getKeyChar());
     }
 
     public void keyPressed(KeyEvent e) {
-        System.out.println("Ehat");
+        System.out.println("Key");
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
            direction = Direction.LEFT;
         }

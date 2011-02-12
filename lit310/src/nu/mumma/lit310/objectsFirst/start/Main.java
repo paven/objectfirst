@@ -27,11 +27,10 @@ public class Main extends JFrame{
 
     private void start() throws IOException {
         this.setSize(600, 500);
-        this.setVisible(rootPaneCheckingEnabled);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         new Start(this);
-
+        
     }
 
 
