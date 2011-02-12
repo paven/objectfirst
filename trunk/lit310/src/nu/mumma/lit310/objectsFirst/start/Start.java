@@ -10,12 +10,14 @@ import java.io.IOException;
 import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
 import nu.mumma.lit310.recycleGame.sprites.Player;
 import java.awt.Container;
+import java.awt.Point;
 import nu.mumma.lit310.objectsFirst.core.GameEngine;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 import nu.mumma.lit310.objectsFirst.core.User;
 import nu.mumma.lit310.objectsFirst.core.GameCanvas;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Bin;
+import nu.mumma.lit310.recycleGame.sprites.House;
 import nu.mumma.lit310.recycleGame.sprites.PaperBin;
 
 
@@ -37,12 +39,12 @@ public class Start {
         //gameCanvas.addKeyListener(user);
         Player player = new Player(user);
         container.add(gameCanvas);
-        container.validate();
+        add(player);
+        buildMap();
+        container.setVisible(true);
         gameCanvas.requestFocus();
         gameCanvas.addKeyListener(user);
         container.addKeyListener(user);
-        add(player);
-        buildMap();
         run();
   
     }
@@ -53,8 +55,9 @@ public class Start {
         }
     }
 
-    private void buildMap() {
-      //  add(new PaperBin());
+    private void buildMap() throws IOException {
+      add(new House(new Point(150, 150)));
+
         
 
     }
