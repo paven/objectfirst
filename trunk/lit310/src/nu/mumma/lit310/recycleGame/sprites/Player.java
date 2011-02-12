@@ -81,7 +81,7 @@ public class Player extends Sprite  implements  Moveable {
             double down = other.getMaxY() -  this.getCollisionBox().getMinY();
             double up = this.getCollisionBox().getMaxY() - other.getMinY();
             double left = other.getMaxX() -  this.getCollisionBox().getMinX();
-            double right = this.getCollisionBox().getMaxY() - other.getMinY();
+            double right = this.getCollisionBox().getMaxX() - other.getMinX();
             System.out.println("Down; " + down + " UP: " + up + " LEFT: " + left + " Right " + right);
             
             if(Math.abs(Math.min(down, up)  - Math.min(left, right))<2){ //is close to corner
@@ -107,10 +107,10 @@ public class Player extends Sprite  implements  Moveable {
             }
             else {
                 if(left < right){
-                    this.moveX(-left);
+                    this.moveX(left);
                 }
                 else{
-                    this.moveY(right);
+                    this.moveX(-right);
                 }
             }
             
