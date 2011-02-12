@@ -9,17 +9,17 @@ import java.awt.PopupMenu;
 import java.io.IOException;
 import objectsfirst.sprites.Player;
 import java.awt.Container;
-import objectsfirst.controller.GameEngine;
-import objectsfirst.controller.Positionable;
+import nu.mumma.lit310.objectsFirst.core.GameEngine;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 import objectsfirst.controller.User;
-import objectsfirst.view.GameCanvas;
-import objectsfirst.view.Paintable;
+import nu.mumma.lit310.objectsFirst.core.GameCanvas;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 
 
 
 /**
  *
- * @author Gustafsp
+ * @author Patrik Gustafsson  at mumma.nu
  */
 public class Start {
     

@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.controller;
+package nu.mumma.lit310.objectsFirst.core.abstraction;
 
+import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 import java.util.LinkedList;
 import java.util.List;
-import objectsfirst.view.Paintable;
 
 /**
  *
