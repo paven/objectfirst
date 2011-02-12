@@ -9,8 +9,8 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import objectsfirst.controller.Recyclable;
-import objectsfirst.view.Paintable;
+import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 
 /**
  *

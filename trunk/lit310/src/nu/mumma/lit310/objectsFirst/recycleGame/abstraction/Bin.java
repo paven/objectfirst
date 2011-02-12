@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.controller;
+package nu.mumma.lit310.objectsFirst.recycleGame.abstraction;
+
+import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
 
 /**
  *

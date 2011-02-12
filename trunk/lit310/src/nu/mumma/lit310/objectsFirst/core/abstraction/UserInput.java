@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.controller;
+package nu.mumma.lit310.objectsFirst.core.abstraction;
 
 
 
@@ -11,7 +11,7 @@ package objectsfirst.controller;
  *
  * @author Gustafsp
  */
-interface UserInput {
+public interface UserInput {
     public Direction getDirection();
     public Character getActionKey();
 

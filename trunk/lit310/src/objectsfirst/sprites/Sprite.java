@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import objectsfirst.controller.Collideble;
-import objectsfirst.view.Paintable;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Collideble;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 
 /**
  *
@@ -64,6 +64,20 @@ public class Sprite implements Collideble, Paintable {
 
     public void collidedWith(Collideble other) {
 
+    }
+
+    /**
+     * @param x the x to set
+     */
+    protected void setX(double x) {
+        this.x = x;
+    }
+
+    /**
+     * @param y the y to set
+     */
+    protected void setY(double y) {
+        this.y = y;
     }
 
 }

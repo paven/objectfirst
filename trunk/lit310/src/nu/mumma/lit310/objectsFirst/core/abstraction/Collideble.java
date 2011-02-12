@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.controller;
+package nu.mumma.lit310.objectsFirst.core.abstraction;
 
 import java.awt.Point;
 import java.awt.Rectangle;

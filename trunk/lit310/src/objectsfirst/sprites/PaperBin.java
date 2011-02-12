@@ -6,10 +6,10 @@
 package objectsfirst.sprites;
 
 import java.awt.Image;
-import objectsfirst.controller.Bin;
-import objectsfirst.controller.GameEngine;
-import objectsfirst.controller.Recyclable;
-import objectsfirst.view.Paintable;
+import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Bin;
+import nu.mumma.lit310.objectsFirst.core.GameEngine;
+import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 
 /**
  *

@@ -5,6 +5,8 @@
 
 package objectsfirst.controller;
 
+import nu.mumma.lit310.objectsFirst.core.abstraction.Direction;
+import nu.mumma.lit310.objectsFirst.core.abstraction.UserInput;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

@@ -5,8 +5,9 @@
 
 package objectsfirst;
 
+import java.io.IOException;
 import javax.swing.JFrame;
-import objectsfirst.view.GameCanvas;
+import nu.mumma.lit310.objectsFirst.core.GameCanvas;
 
 /**
  *
@@ -17,13 +18,13 @@ public class Main extends JFrame{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Main main = new Main();
         main.start();
         // TODO code application logic here
     }
 
-    private void start() {
+    private void start() throws IOException {
         this.setSize(400, 500);
         this.setVisible(rootPaneCheckingEnabled);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
