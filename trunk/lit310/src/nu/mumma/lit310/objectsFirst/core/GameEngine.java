@@ -24,29 +24,17 @@ public class GameEngine implements Runnable {
     private final static List<Positionable> positionables = new LinkedList<Positionable>();
 
     public GameEngine() {
-        new Thread(this).start();
+        //new Thread(this).start();
     }
 
     public void run() {
-        while (true) {
-            long delta = System.currentTimeMillis() - lastLoop;
-            
-//            if(delta<10){ //
-//                try {
-//                    Thread.sleep(10 - delta);
-//                } catch (InterruptedException ex) {
-//                    break;
-//                }
-//                delta = System.currentTimeMillis()-lastLoop;
-//            }
+            long delta = System.currentTimeMillis() - lastLoop;   
             lastLoop = System.currentTimeMillis();
             makeMoves(delta);
-
-
-        }
+            resolveColisions();
     }
 
-    private synchronized void makeMoves(long delta) {
+    private void makeMoves(long delta) {
         for (Positionable moveable : positionables) {
             if (moveable instanceof Moveable) {
                 ((Moveable) moveable).move(delta);
@@ -56,5 +44,9 @@ public class GameEngine implements Runnable {
 
     public void add(Positionable positionable) {
         positionables.add(positionable);
+    }
+
+    private void resolveColisions() {
+        //TODO
     }
 }
