@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.sprites;
+package nu.mumma.lit310.recycleGame.sprites;
 
 import java.awt.Image;
 import java.awt.Point;

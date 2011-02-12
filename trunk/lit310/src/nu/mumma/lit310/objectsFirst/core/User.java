@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package objectsfirst.controller;
+package nu.mumma.lit310.objectsFirst.core;
 
 import nu.mumma.lit310.objectsFirst.core.abstraction.Direction;
 import nu.mumma.lit310.objectsFirst.core.abstraction.UserInput;
@@ -28,9 +28,11 @@ public class User implements UserInput, KeyListener{
 
     public void keyTyped(KeyEvent e) {
         lastAction = e.getKeyChar();
+        System.out.println(e.getKeyChar());
     }
 
     public void keyPressed(KeyEvent e) {
+        
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
            direction = Direction.LEFT;
         }
