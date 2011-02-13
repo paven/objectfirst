@@ -16,10 +16,8 @@ import java.util.List;
  * @author Gustafsp
  */
 public interface Moveable extends Positionable {
-    /**
-     * al active objectes of the Moveable interface shoule be added to this list
-     */
-    public final static List<Moveable> moveables = new LinkedList<Moveable>();
+   
+   
     /** delta is in milli seconds
      * @param delta gametime in ms since last call;
      */

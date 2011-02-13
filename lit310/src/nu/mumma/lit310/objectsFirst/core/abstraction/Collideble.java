@@ -8,6 +8,7 @@ package nu.mumma.lit310.objectsFirst.core.abstraction;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,8 @@ public interface Collideble extends Positionable{
     public boolean collidesWith(Rectangle2D.Double other);
     public boolean collidesWith(Point point);
     public void collidedWith(Collideble other);
+
+ 
 
 
     

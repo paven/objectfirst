@@ -26,7 +26,7 @@ public class Main extends JFrame{
     }
 
     private void start() throws IOException {
-        this.setSize(600, 500);
+        this.setSize(720, 620);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         new Start(this);

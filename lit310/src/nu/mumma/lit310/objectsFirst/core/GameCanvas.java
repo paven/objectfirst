@@ -11,6 +11,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
+import nu.mumma.lit310.objectsfirst.start.Start;
+import nu.mumma.lit310.recycleGame.sprites.Trash;
 
 /**
  *
@@ -28,7 +31,6 @@ public class GameCanvas extends Canvas implements Runnable {
     private int targetmSPF = 1000 / targetFPS;  //miliseconds per frame
 
     public GameCanvas() {
-        
     }
 
     @Override
@@ -36,9 +38,15 @@ public class GameCanvas extends Canvas implements Runnable {
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, getWidth(), getHeight());
         for (Paintable paintable : paintables) {
-            g.drawImage(paintable.getImage(), paintable.getX(), paintable.getY(), null);
+            if (paintable.getX() > this.getWidth() || paintable.getX() < 0) { //x out of bounds
+                System.out.println("OUT");
+                Start.remove(paintable);
+            } else if (paintable.getY() > this.getHeight() || paintable.getY() < 0) { //y out of bounds
+                Start.remove(paintable);
+            } else {
+                g.drawImage(paintable.getImage(), paintable.getX(), paintable.getY(), null);
+            }
         }
-
     }
 
     private void bufferStrategyRunOnce() {
@@ -54,19 +62,23 @@ public class GameCanvas extends Canvas implements Runnable {
      */
     public void run() {
 
-        
-            long loopStart = System.currentTimeMillis();
-            if (this.isShowing()) {
-                bufferStrategyRunOnce();
-                this.paint(bufferStrategy.getDrawGraphics());
-                bufferStrategy.show();
-                bufferStrategy.getDrawGraphics().dispose();
 
-            }
-            
+        long loopStart = System.currentTimeMillis();
+        if (this.isShowing()) {
+            bufferStrategyRunOnce();
+            this.paint(bufferStrategy.getDrawGraphics());
+            bufferStrategy.show();
+            bufferStrategy.getDrawGraphics().dispose();
+
+        }
+
     }
 
     public void add(Paintable paintable) {
         paintables.add(paintable);
+    }
+
+    public void clearRemoved(List<Positionable> list) {
+        paintables.removeAll(list);
     }
 }
