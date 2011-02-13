@@ -16,7 +16,7 @@ import java.awt.event.KeyListener;
  */
 public class User implements UserInput, KeyListener{
     private Direction direction = Direction.STOP;
-    private Character lastAction = ' ';
+    private Character lastAction = 'P';
 
     public Direction getDirection() {
         return direction;
@@ -49,7 +49,7 @@ public class User implements UserInput, KeyListener{
     }
 
     public void keyReleased(KeyEvent e) {
-
+        lastAction = 'R';
         
     }
 

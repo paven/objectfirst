@@ -12,9 +12,12 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import javax.imageio.ImageIO;
+import javax.swing.text.Position;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Collideble;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 
 /**
  *
@@ -42,8 +45,11 @@ public Sprite(double x, double y) throws IOException {
         image = ImageIO.read(file);
         collisionBox = new Rectangle2D.Double(x, y, image.getWidth(), image.getHeight());
     }
-    
-
+    /**
+     *
+     * @param positionables
+     * @return
+     */
 
     public boolean collidesWith(Rectangle2D.Double other){
 

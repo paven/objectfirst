@@ -6,40 +6,30 @@
 package nu.mumma.lit310.recycleGame.sprites;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Collideble;
 import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
+import nu.mumma.lit310.objectsFirst.core.abstraction.Solid;
 
 /**
  *
  * @author Gustafsp
  */
-public class Paper implements Recyclable, Paintable {
+public class Paper extends Trash {
 
-      private Image image;
    
-    private int y = 200;
-    private int x = 200;
 
-    public Paper() throws IOException {
-        String filepath = "res"+File.separator +"gubbe.png";
-        File file = new File(filepath);
-        image = ImageIO.read(file);
+    public Paper(Point point) throws IOException {
+        super(point.getX(), point.getY());
 
     }
 
-    public Image getImage() {
-        return image;
-    }
 
-    public int getX() {
-        return x;
-    }
 
-    public int getY() {
-        return y;
-    }
+   
 
 }
