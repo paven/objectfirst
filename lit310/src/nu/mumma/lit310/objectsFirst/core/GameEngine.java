@@ -24,12 +24,13 @@ public class GameEngine implements Runnable {
      * al active objectes of the Positionable interface shoule be added to this list
      */
     private final static List<Positionable> positionables = new LinkedList<Positionable>();
-    private  final static List<Positionable> removed = new LinkedList<Positionable>();
+    private final static List<Positionable> removed = new LinkedList<Positionable>();
 
     public GameEngine() {
         //new Thread(this).start();
     }
-public void add(Positionable positionable) {
+
+    public void add(Positionable positionable) {
         GameEngine.positionables.add(positionable);
     }
 
@@ -38,17 +39,25 @@ public void add(Positionable positionable) {
     }
 
     public void run() {
-        
+
         long delta = System.currentTimeMillis() - lastLoop;
         lastLoop = System.currentTimeMillis();
         makeMoves(delta);
     }
+
     private void makeMoves(long delta) {
-        for (Positionable moveable : positionables) {
-            if (moveable instanceof Moveable) {
-                ((Moveable) moveable).move(delta);
-                if (moveable instanceof Collideble) {
-                    collisionCalculations((Collideble) moveable);
+        long steps = 1;
+        while (delta > 100) {
+            steps *= 2;
+            delta /= 2;
+        }
+        while (steps-- > 0) {
+            for (Positionable moveable : positionables) {
+                if (moveable instanceof Moveable) {
+                    ((Moveable) moveable).move(delta);
+                    if (moveable instanceof Collideble) {
+                        collisionCalculations((Collideble) moveable);
+                    }
                 }
             }
         }
@@ -66,6 +75,4 @@ public void add(Positionable positionable) {
             }
         }
     }
-
-
 }

@@ -49,13 +49,13 @@ public class Player extends Sprite implements Moveable {
             moveY(((double) delta) / 10);
 
         }
-        if (user.getDirection() == Direction.UP) {
+        else if(user.getDirection() == Direction.UP) {
             moveY(-((double) delta) / 10);
         }
-        if (user.getDirection() == Direction.RIGHT) {
+        else if(user.getDirection() == Direction.RIGHT) {
             moveX(((double) delta) / 10);
         }
-        if (user.getDirection() == Direction.LEFT) {
+        else if(user.getDirection() == Direction.LEFT) {
             moveX(-((double) delta) / 10);
         }
     }
@@ -64,12 +64,16 @@ public class Player extends Sprite implements Moveable {
     public void collidedWith(Collideble other) {
         if (other instanceof Solid) {
             this.escape(other.getCollisionBox());
-        }
-        if (other instanceof Trash) {
+        } else if (other instanceof Trash) {
             if (user.getActionKey() == ' ') {
                 Class type = ((Trash) other).pickUP();
                 countTrash(type);
                 Start.remove(other);
+            }
+        } else if (other instanceof Bin) {
+            if (user.getActionKey() == ' ') {
+                ((Bin) other).resycle(trashCount);
+                this.escape(other.getCollisionBox());
             }
         }
     }
