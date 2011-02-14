@@ -46,28 +46,21 @@ public class Bin extends Sprite {
         if (inBags.containsKey(binType)) {
             int count = inBags.get(binType);
             inBags.put(binType, 0);
-            resycleMessage(count);
+            int trees = (count + savedPapper) / 10;
+            savedPapper += count - trees * 10;
 
-        }
-    }
 
-    private void resycleMessage(int count) {
-        int threes = count / 10;
-        JOptionPane.showMessageDialog(null, "By recyceling " + count + " paperstacks you stoped the need for " + threes + " threes to be shoped down. That in turn helps keeping the greenhouse effect in check");
-        count = count - threes * 10;
+            while (trees-- > 0) {
+                try {
+                    scoreBoard.add("Tree.png");
 
-        while (threes-- > 0) {
-            try {
-                scoreBoard.add("Tree.png");
-            } catch (IOException ex) {
-                System.out.println("ERROR: Image did not load");
-                System.exit(-1);
+                } catch (IOException ex) {
+                    System.out.println("ERROR: Image did not load");
+                    System.exit(-1);
+                }
             }
-        }
-        try {
-            scoreBoard.add("Tree.png");
-        } catch (IOException ex) {
-            Logger.getLogger(Bin.class.getName()).log(Level.SEVERE, null, ex);
+
+
         }
     }
 }

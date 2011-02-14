@@ -20,7 +20,21 @@ import nu.mumma.lit310.objectsFirst.core.abstraction.Solid;
  * @author Gustafsp
  */
 public class Paper extends Trash {
+     private static boolean firstPaperPicked;
 
+    /**
+     * @return the firstPaperPicked
+     */
+    public static boolean isFirstPaperPicked() {
+        return firstPaperPicked;
+    }
+
+    /**
+     * @param aFirstPaperPicked the firstPaperPicked to set
+     */
+    public static void setFirstPaperPicked(boolean aFirstPaperPicked) {
+        firstPaperPicked = aFirstPaperPicked;
+    }
    
 
     public Paper(Point point) throws IOException {

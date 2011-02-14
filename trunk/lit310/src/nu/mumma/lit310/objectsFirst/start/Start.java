@@ -11,6 +11,7 @@ import java.awt.Container;
 import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import nu.mumma.lit310.objectsFirst.core.GameEngine;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Positionable;
 import nu.mumma.lit310.objectsFirst.core.User;
@@ -35,10 +36,13 @@ public class Start {
     public static void remove(Positionable remove) {
         removed.add(remove);
     }
+    private long lastTrash = System.currentTimeMillis();
+    private long difficulty = 1500; //lower is harder
+    private User user = new User();
 
     public Start(Container container) throws IOException {
 
-        User user = new User();
+
         this.container = container;
 
         //gameCanvas.addKeyListener(user);
@@ -52,6 +56,13 @@ public class Start {
         gameCanvas.requestFocus();
         gameCanvas.addKeyListener(user);
         container.addKeyListener(user);
+        JOptionPane.showMessageDialog(null,
+                "I din stad har folk blivigt tokiga och slänger tidningar för vinden. \n"
+                + "Träd skövlas i onödan! \n"
+                + "Du inser att du måste återvinna skräpet. \n");
+        JOptionPane.showMessageDialog(null, "Du styr med piltangenterna. \n"
+                + "Du plockar upp saker med <space>! \n"
+                + "På återviningsstationen kan du återvinna skräpet du samlat upp genom att trycka på <space>.");
         run();
 
     }
@@ -88,14 +99,24 @@ public class Start {
         }
 
         //Interior Houses
+        for (int x = 400; x < container.getWidth() - 200; x += 50) {
+            add(new GreenHouse(new Point(x, 300)));
+        }
         for (int y = 100; y < container.getHeight() - 150; y += 50) {
             add(new House(new Point(container.getWidth() - 170, y)));
         }
         for (int y = 150; y < container.getHeight() - 150; y += 50) {
             add(new House(new Point(300, y)));
         }
-        add(new Paper(new Point(150, 150)));
-
+        for (int y = 150; y < container.getHeight() - 200; y += 50) {
+            add(new GreenHouse(new Point(150, y)));
+        }
+        for (int x = 360; x < container.getWidth() - 250; x += 50) {
+            add(new House(new Point(x, 200)));
+        }
+        for (int i = 0; i < 10; i++) {
+            spawnTrash();
+        }
 
 
     }
@@ -103,7 +124,9 @@ public class Start {
     private void run() throws IOException {
         while (true) {
             remove();
-            gameEngine.run();
+            if (user.getLastActionKey() != 'p' && user.getLastActionKey() != 'P') {
+                gameEngine.run();
+            }
             gameCanvas.run();
             generateTrash();
 
@@ -112,19 +135,17 @@ public class Start {
 
     private void generateTrash() throws IOException {
 
-        while (true) {
-            Paper p = new Paper(new Point(
-                    (int) (Math.random() * this.container.getWidth()),
-                    (int) (Math.random() * this.container.getHeight())));
-            add(p);
-            gameEngine.collisionCalculations(p);
-            if (p.isRemoved()) {
-                continue;
-            } else {
-                break;
-            }
+        if (lastTrash < System.currentTimeMillis() - difficulty) {
+            lastTrash = System.currentTimeMillis();
+            spawnTrash();
         }
     }
+
+    private void spawnTrash() throws IOException {
+        Paper p = new Paper(new Point((int) (Math.random() * this.container.getWidth()), (int) (Math.random() * this.container.getHeight())));
+        add(p);
+        gameEngine.collisionCalculations(p);
+        //if
+    }
+
 }
-
-
