@@ -27,6 +27,7 @@ public abstract class Sprite implements Collideble, Paintable {
     protected String filename = "gubbe.png";
     private BufferedImage image;
     private Rectangle2D.Double collisionBox;
+    protected boolean removed;
 
     public Sprite(double x, double y, String filename) throws IOException {
         this.filename = filename;
@@ -39,12 +40,15 @@ public abstract class Sprite implements Collideble, Paintable {
         init(x, y);
     }
 
-    private void init(double x, double y) throws IOException {
-        String filepath = "res" + File.separator + filename;
-
-        File file = new File(filepath);
-        image = ImageIO.read(file);
+    protected void init(double x, double y) throws IOException {
+        image = loadImage(filename);
         collisionBox = new Rectangle2D.Double(x, y, image.getWidth(), image.getHeight());
+    }
+
+    protected BufferedImage loadImage(String filename) throws IOException {
+        String filepath = "res" + File.separator + filename;
+        File file = new File(filepath);
+        return ImageIO.read(file);
     }
 
     /**
@@ -109,5 +113,13 @@ public abstract class Sprite implements Collideble, Paintable {
 
     protected void setImage(BufferedImage buff) {
         image = buff;
+        getCollisionBox().setRect(getCollisionBox().getX(), getCollisionBox().getY(), image.getWidth(), image.getHeight());
+        System.out.println(this.getClass() + " setImage");
+    }
+        /**
+     * @return the pickedUP
+     */
+    public boolean isRemoved() {
+        return removed;
     }
 }

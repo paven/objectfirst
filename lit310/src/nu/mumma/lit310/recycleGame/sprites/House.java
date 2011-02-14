@@ -30,7 +30,7 @@ public class House extends Sprite implements Solid{
     public void collidedWith(Collideble other) {
         if(other instanceof Moveable){
             ((Moveable)other).escape(this.getCollisionBox());
-            System.out.println("Col");
+
         }
     }
 }

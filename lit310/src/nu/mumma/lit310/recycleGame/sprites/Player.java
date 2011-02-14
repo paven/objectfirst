@@ -73,7 +73,7 @@ public class Player extends Sprite implements Moveable {
         } else if (other instanceof Bin) {
             if (user.getActionKey() == ' ') {
                 ((Bin) other).resycle(trashCount);
-                this.escape(other.getCollisionBox());
+                //this.escape(other.getCollisionBox());
             }
         }
     }
@@ -86,7 +86,7 @@ public class Player extends Sprite implements Moveable {
             double up = this.getCollisionBox().getMaxY() - other.getMinY();
             double left = other.getMaxX() - this.getCollisionBox().getMinX();
             double right = this.getCollisionBox().getMaxX() - other.getMinX();
-            System.out.println("Down; " + down + " UP: " + up + " LEFT: " + left + " Right " + right);
+            
 
             if (Math.abs(Math.min(down, up) - Math.min(left, right)) < 2) { //is close to corner
                 if (user.getDirection() == Direction.LEFT) {
@@ -124,7 +124,7 @@ public class Player extends Sprite implements Moveable {
                 count = trashCount.get(type) + 1;
             }
             trashCount.put(type, count);
-            System.out.println(count);
+        
         }
     }
 }
