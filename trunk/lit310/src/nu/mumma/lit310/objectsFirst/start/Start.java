@@ -5,7 +5,7 @@
 package nu.mumma.lit310.objectsfirst.start;
 
 import java.io.IOException;
-import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
+
 import nu.mumma.lit310.recycleGame.sprites.Player;
 import java.awt.Container;
 import java.awt.Point;
@@ -17,11 +17,8 @@ import nu.mumma.lit310.objectsFirst.core.User;
 import nu.mumma.lit310.objectsFirst.core.GameCanvas;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Collideble;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
-import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Bin;
-import nu.mumma.lit310.recycleGame.sprites.GreenHouse;
-import nu.mumma.lit310.recycleGame.sprites.House;
-import nu.mumma.lit310.recycleGame.sprites.Paper;
-import nu.mumma.lit310.recycleGame.sprites.PaperBin;
+
+import nu.mumma.lit310.recycleGame.sprites.*;
 
 /**
  *
@@ -33,6 +30,7 @@ public class Start {
     private GameEngine gameEngine = new GameEngine();
     private static List<Positionable> removed = new LinkedList<Positionable>();
     private final Container container;
+    private final ScoreBoard scoreBoard;
 
     public static void remove(Positionable remove) {
         removed.add(remove);
@@ -47,6 +45,8 @@ public class Start {
         Player player = new Player(user);
         container.add(gameCanvas);
         add(player);
+        scoreBoard = new ScoreBoard(0, 0, container.getWidth(), 45);
+        add(scoreBoard);
         buildMap();
         container.setVisible(true);
         gameCanvas.requestFocus();
@@ -72,7 +72,7 @@ public class Start {
     }
 
     private void buildMap() throws IOException {
-
+        add(new Bin(150, 100, scoreBoard));
         //Borders
         for (int y = 50; y < container.getHeight(); y += 50) {
             add(new House(new Point(0, y)));
@@ -94,7 +94,7 @@ public class Start {
         for (int y = 150; y < container.getHeight() - 150; y += 50) {
             add(new House(new Point(300, y)));
         }
-
+        add(new Paper(new Point(150, 150)));
 
 
 
@@ -107,4 +107,6 @@ public class Start {
             gameCanvas.run();
         }
     }
+
+  
 }

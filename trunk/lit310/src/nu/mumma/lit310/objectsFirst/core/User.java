@@ -23,6 +23,8 @@ public class User implements UserInput, KeyListener{
     }
 
     public Character getActionKey() {
+        Character lastAction = this.lastAction;
+        this.lastAction = 'R';
         return lastAction;
     }
 
