@@ -100,13 +100,31 @@ public class Start {
 
     }
 
-    private void run() {
+    private void run() throws IOException {
         while (true) {
             remove();
             gameEngine.run();
             gameCanvas.run();
+            generateTrash();
+
         }
     }
 
-  
+    private void generateTrash() throws IOException {
+
+        while (true) {
+            Paper p = new Paper(new Point(
+                    (int) (Math.random() * this.container.getWidth()),
+                    (int) (Math.random() * this.container.getHeight())));
+            add(p);
+            gameEngine.collisionCalculations(p);
+            if (p.isRemoved()) {
+                continue;
+            } else {
+                break;
+            }
+        }
+    }
 }
+
+
