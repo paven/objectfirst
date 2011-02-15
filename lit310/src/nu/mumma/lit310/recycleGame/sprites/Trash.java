@@ -4,14 +4,14 @@
  */
 package nu.mumma.lit310.recycleGame.sprites;
 
-import static nu.mumma.lit310.objectsfirst.start.Start.remove;
+import static nu.mumma.lit310.objectsFirst.start.Start.remove;
 import java.io.IOException;
 import java.util.HashMap;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Collideble;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Paintable;
 import nu.mumma.lit310.objectsFirst.core.abstraction.Solid;
 import nu.mumma.lit310.objectsFirst.recycleGame.abstraction.Recyclable;
-import nu.mumma.lit310.objectsfirst.start.Start;
+import nu.mumma.lit310.objectsFirst.start.Start;
 
 /**
  *
