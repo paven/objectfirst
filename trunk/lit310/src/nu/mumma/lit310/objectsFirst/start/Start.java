@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package nu.mumma.lit310.objectsfirst.start;
+package nu.mumma.lit310.objectsFirst.start;
 
 import java.io.IOException;
 

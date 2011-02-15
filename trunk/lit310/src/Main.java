@@ -3,10 +3,11 @@
  * and open the template in the editor.
  */
 
-package nu.mumma.lit310.objectsfirst.start;
+
 
 import java.io.IOException;
 import javax.swing.JFrame;
+import nu.mumma.lit310.objectsfirst.start.Start;
 
 
 /**
